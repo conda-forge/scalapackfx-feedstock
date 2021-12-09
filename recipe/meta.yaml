@@ -28,18 +28,17 @@ requirements:
     - cmake
     - ninja
     - fypp
+    - llvm-openmp  # [osx]
+    - libgomp  # [linux]
   host:
     - {{ mpi }}
     - scalapack
     - libblas
     - liblapack
-    - llvm-openmp  # [osx]
-    - libgomp  # [linux and not aarch64]
   run:
     - {{ mpi }}
     - scalapack
-    - libblas
-    - liblapack
+
 
 test:
   requires:
