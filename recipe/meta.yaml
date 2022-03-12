@@ -1,6 +1,6 @@
 {% set name = "scalapackfx" %}
 {% set version = "1.0.2" %}
-{% set build = 0 %}
+{% set build = 1 %}
 {% set mpi = mpi or "nompi" %}
 
 package:
@@ -19,7 +19,7 @@ build:
   string: {{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}
 
   run_exports:
-    - {{ name }} * {{ mpi_prefix }}_*
+    - {{ pin_subpackage(name, max_pin='x.x') }} {{ mpi_prefix }}_*
 
 requirements:
   build:
@@ -30,6 +30,7 @@ requirements:
     - fypp
     - llvm-openmp  # [osx]
     - libgomp  # [linux]
+    - {{ mpi }}  # [mpi == "openmpi" and build_platform != target_platform]
   host:
     - {{ mpi }}
     - scalapack
@@ -45,8 +46,7 @@ test:
     - pkg-config
   commands:
     - pkg-config {{ name }} --exact-version {{ version }}
-    - test -f $PREFIX/lib/libscalapackfx.dylib  # [osx]
-    - test -f $PREFIX/lib/libscalapackfx.so  # [linux]
+    - test -f $PREFIX/lib/lib{{ name }}${SHLIB_EXT}
 
 about:
   home: https://github.com/dftbplus/{{ name }}
