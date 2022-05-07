@@ -45,7 +45,7 @@ test:
   requires:
     - pkg-config
   commands:
-    - pkg-config {{ name }} --exact-version {{ version }}
+    - pkg-config {{ name }} --modversion
     - test -f $PREFIX/lib/lib{{ name }}${SHLIB_EXT}
 
 about:
