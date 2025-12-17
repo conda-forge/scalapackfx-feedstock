@@ -1,6 +1,6 @@
 {% set name = "scalapackfx" %}
-{% set version = "1.2" %}
-{% set build = 1 %}
+{% set version = "1.3" %}
+{% set build = 0 %}
 {% set mpi = mpi or "nompi" %}
 
 package:
@@ -8,8 +8,9 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/dftbplus/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 277fd170cfe6b6c67242a2c179494ec48d0daae94eac26f8361ca30aafe71b98
+  # url: https://github.com/dftbplus/{{ name }}/archive/{{ version }}.tar.gz
+  url: https://github.com/aradi/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
+  sha256: 463e2c34485aac81b6e9844aa70601bf5d6271ed32dab0b328a440be8e1ddbea
 
 build:
   number: {{ build }}
