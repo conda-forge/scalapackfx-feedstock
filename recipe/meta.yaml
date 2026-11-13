@@ -1,6 +1,6 @@
 {% set name = "scalapackfx" %}
-{% set version = "1.3" %}
-{% set build = 1 %}
+{% set version = "1.4" %}
+{% set build = 0 %}
 {% set mpi = mpi or "nompi" %}
 
 package:
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://github.com/dftbplus/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 463e2c34485aac81b6e9844aa70601bf5d6271ed32dab0b328a440be8e1ddbea
+  sha256: 7d911e3731f8d7f66af7493cf111caa0cb0fb0fa04ec3d62e3733f4268a55eae
 
 build:
   number: {{ build }}
